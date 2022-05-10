@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@raw/logo"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/state"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bluethooth state:"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/namedevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Device name:"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="40dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Connect:"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="90dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exp"
+        android:textColor="@color/black"
+        android:text="My Device Adress:">
+    </TextView>
+
+    <Button
+        android:id="@+id/btnsearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Search"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="370dp" />
+
+    <Button
+        android:id="@+id/btnstop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="I found my device"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="420dp" />
+    <Button
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Device List"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="420dp" />
+
+</LinearLayout>
