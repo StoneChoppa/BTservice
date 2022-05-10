@@ -83,12 +83,13 @@ public class MainActivity extends AppCompatActivity {
             connect.setText("Connect: false");
             dev.setText("My Device Adress: null");
         }else {
+            adress = bluetoothAdapter.getAddress();
             //name.setText(1);
-            state.setText("BT state: " + bluetoothAdapter.getState());
+            //state.setText("BT state: " + bluetoothAdapter.getState());
             connect.setText("Connect: true");
-            dev.setText("My Device Adress: " + bluetoothAdapter.getAddress());
+            //dev.setText("My Device Adress: " + adress);
                 /*
-                adress = bluetoothAdapter.getAddress();
+
             namebt = bluetoothAdapter.getName();
                 name.setText(namebt);
                 connect.setText(adress);
