@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         //Set<BluetoothDevice> pairedDevices= bluetoothAdapter.getBondedDevices();
         //adress = bluetoothAdapter.getAddress();
         //namebt = bluetoothAdapter.getName();

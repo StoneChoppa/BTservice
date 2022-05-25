@@ -9,38 +9,62 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.PermissionChecker;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-public class ListAdapter extends AppCompatActivity {
-    Button btnSearch;
+public class ListAdapter extends AppCompatActivity implements RVadapter.ItemClickListener {
+    /*Button btnSearch;
     BluetoothAdapter bluetoothAdapter;
     ListView listView;
     ArrayList<String> pairedDeviceArrayList;
     ArrayAdapter<String> pairedDeviceAdapter;
-    public static BluetoothSocket clientSocket;
+    public static BluetoothSocket clientSocket;*/
+    RVadapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
+        ArrayList<String> names = new ArrayList<>();
+        names.add("a");
+        names.add("b");
+        names.add("c");
+        names.add("d");
+        names.add("e");
+        RecyclerView recyclerView = findViewById(R.id.rv);
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(0, StaggeredGridLayoutManager.VERTICAL));
+        adapter = new RVadapter(this, names);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+}
 
 
-        listView = findViewById(R.id.lv);
-
+/*
         btnSearch = findViewById(R.id.devices);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +76,8 @@ public class ListAdapter extends AppCompatActivity {
                     }
                 }
             }
-        });
-    }
-
-    @SuppressLint("MissingPermission")
+        });*/
+/*    @SuppressLint("MissingPermission")
     boolean bluetoothEnabled() {
         if (bluetoothAdapter.isEnabled()) {
             return true;
@@ -127,5 +149,5 @@ public class ListAdapter extends AppCompatActivity {
                 }
             });
         }
-    }
-}
+    }*/
+
