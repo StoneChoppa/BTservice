@@ -25,18 +25,18 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class ListAdapter extends AppCompatActivity {
-    private Button btnSearch;
-    private BluetoothAdapter bluetoothAdapter;
-    private ListView listView;
-    private ArrayList<String> pairedDeviceArrayList;
-    private ArrayAdapter<String> pairedDeviceAdapter;
+    Button btnSearch;
+    BluetoothAdapter bluetoothAdapter;
+    ListView listView;
+    ArrayList<String> pairedDeviceArrayList;
+    ArrayAdapter<String> pairedDeviceAdapter;
     public static BluetoothSocket clientSocket;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.listview);
 
 
         listView = findViewById(R.id.lv);
@@ -54,8 +54,9 @@ public class ListAdapter extends AppCompatActivity {
             }
         });
     }
+
     @SuppressLint("MissingPermission")
-    private boolean bluetoothEnabled() {
+    boolean bluetoothEnabled() {
         if (bluetoothAdapter.isEnabled()) {
             return true;
         } else {
@@ -64,6 +65,7 @@ public class ListAdapter extends AppCompatActivity {
             return false;
         }
     }
+
     private boolean permissionGranted() {
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.BLUETOOTH)
                 == PermissionChecker.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(),
@@ -107,15 +109,14 @@ public class ListAdapter extends AppCompatActivity {
                             try {
 
 
-                                @SuppressLint("MissingPermission") BluetoothSocket socket = device.createRfcommSocketToServiceRecord
+                                @SuppressLint("MissingPermission")
+                                BluetoothSocket socket = device.createRfcommSocketToServiceRecord
                                         (device.getUuids()[0].getUuid());
                                 socket.connect();
                                 if (socket.isConnected()) {
 
-                                    Log.e("eee", "socket get");
+                                    Log.e("ok", "ne ok");
                                     clientSocket = socket;
-
-                                } else {
 
                                 }
                             } catch (Exception e) {

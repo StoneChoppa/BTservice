@@ -15,30 +15,32 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    String adress;
+    String adress, btstate;
     List<Integer> namebt;
-    List<String>list = new ArrayList<String>();
+    List<String> list = new ArrayList<String>();
     BluetoothHeadset headset;
     BluetoothSocket socket;
     BluetoothDevice btdev;
     Button start, stop, golist;
+    ImageButton info;
     TextView state, name, connect, dev;
+
     //private final static int REQUEST_ENABLE_BT = 1;
     @SuppressLint({"MissingPermission", "HardwareIds", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        dev = findViewById(R.id.exp);
+        setContentView(R.layout.main);
+        info = findViewById(R.id.imageButton);
         state = findViewById(R.id.state);
-        name = findViewById(R.id.namedevice);
-        connect = findViewById(R.id.connect);
         start = findViewById(R.id.btnsearch);
         stop = findViewById(R.id.btnstop);
         golist = findViewById(R.id.lv);
@@ -51,13 +53,15 @@ public class MainActivity extends AppCompatActivity {
         });*/
         /*btdev.connectGatt(CONTEXT_IGNORE_SECURITY, int boolean autoConnect, B)
         headset.getConnectionState(btdev);*/
-
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 startService(new Intent(MainActivity.this, MyService.class));
             }
+        });
+        info.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Information.class));
         });
 
         stop.setOnClickListener(new View.OnClickListener() {
@@ -73,22 +77,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+       BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        //Set<BluetoothDevice> pairedDevices= bluetoothAdapter.getBondedDevices();
         //adress = bluetoothAdapter.getAddress();
         //namebt = bluetoothAdapter.getName();
         //namebt.add(headset.getConnectionState(btdev));
 
-        if (bluetoothAdapter == null){
+        if (bluetoothAdapter == null) {
             state.setText("BT state: Your device doesn't support Bluetooth");
-            connect.setText("Connect: false");
-            dev.setText("My Device Adress: null");
-        }else {
-            adress = bluetoothAdapter.getAddress();
+            /*connect.setText("Connect: false");
+            dev.setText("My Device Adress: null");*/
+        } else {
+            state.setText("BT version: " + bluetoothAdapter.getState());
+            /*connect.setText("Connect: true");
+            dev.setText("My Device Adress: ...");*/
+            //adress = bluetoothAdapter.getAddress();
             //name.setText(1);
             //state.setText("BT state: " + bluetoothAdapter.getState());
-            connect.setText("Connect: true");
+
             //dev.setText("My Device Adress: " + adress);
-                /*
+            /*
 
             namebt = bluetoothAdapter.getName();
                 name.setText(namebt);
@@ -130,5 +138,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }*/
         }
-}
+    }
 }

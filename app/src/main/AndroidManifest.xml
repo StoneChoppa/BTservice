@@ -2,15 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.btservice">
     <uses-permission android:name="android.permission.BLUETOOTH"
-        android:maxSdkVersion="30"/>
+        android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
-        android:maxSdkVersion="30"/>
+        android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"
-        android:maxSdkVersion="30"/>
+        android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
-        android:maxSdkVersion="30"/>
+        android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"
-        android:maxSdkVersion="30"/>
+        android:maxSdkVersion="32"/>
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
@@ -29,7 +29,6 @@
         </service>
 
         <activity
-
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -41,6 +40,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListAdapter">
+        </activity>
+        <activity android:name=".Information">
         </activity>
     </application>
 
