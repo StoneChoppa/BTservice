@@ -21,7 +21,6 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         this.data = data;
     }
 
-    // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.textes, parent, false);

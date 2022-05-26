@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.PermissionChecker;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +44,7 @@ public class ListAdapter extends AppCompatActivity implements RVadapter.ItemClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview);
+        setContentView(R.layout.headsetes);
         ArrayList<String> names = new ArrayList<>();
         names.add("a");
         names.add("b");
@@ -51,7 +52,10 @@ public class ListAdapter extends AppCompatActivity implements RVadapter.ItemClic
         names.add("d");
         names.add("e");
         RecyclerView recyclerView = findViewById(R.id.rv);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(0, StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
         adapter = new RVadapter(this, names);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
@@ -59,7 +63,7 @@ public class ListAdapter extends AppCompatActivity implements RVadapter.ItemClic
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "name: " + adapter.getItem(position) + ", position: " + position, Toast.LENGTH_SHORT).show();
     }
 }
 
