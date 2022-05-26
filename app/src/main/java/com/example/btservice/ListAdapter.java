@@ -41,6 +41,7 @@ public class ListAdapter extends AppCompatActivity implements RVadapter.ItemClic
     RVadapter adapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

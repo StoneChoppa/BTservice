@@ -20,7 +20,6 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         this.inflater = LayoutInflater.from(context);
         this.data = data;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.textes, parent, false);

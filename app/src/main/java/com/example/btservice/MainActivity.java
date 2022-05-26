@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     Button start, stop, golist;
     ImageButton info;
     TextView state, name, connect, dev;
-
     //private final static int REQUEST_ENABLE_BT = 1;
     @SuppressLint({"MissingPermission", "HardwareIds", "SetTextI18n"})
     @Override
