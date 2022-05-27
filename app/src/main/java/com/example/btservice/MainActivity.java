@@ -23,15 +23,9 @@ import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    String adress, btstate;
-    List<Integer> namebt;
-    List<String> list = new ArrayList<String>();
-    BluetoothHeadset headset;
-    BluetoothSocket socket;
-    BluetoothDevice btdev;
     Button start, stop, golist;
     ImageButton info;
-    TextView state, name, connect, dev;
+    TextView state;
     //private final static int REQUEST_ENABLE_BT = 1;
     @SuppressLint({"MissingPermission", "HardwareIds", "SetTextI18n"})
     @Override
@@ -43,15 +37,6 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.btnsearch);
         stop = findViewById(R.id.btnstop);
         golist = findViewById(R.id.lv);
-        /*golist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListAdapter.class);
-                startActivity(intent);
-            }
-        });*/
-        /*btdev.connectGatt(CONTEXT_IGNORE_SECURITY, int boolean autoConnect, B)
-        headset.getConnectionState(btdev);*/
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,65 +62,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        //Set<BluetoothDevice> pairedDevices= bluetoothAdapter.getBondedDevices();
-        //adress = bluetoothAdapter.getAddress();
-        //namebt = bluetoothAdapter.getName();
-        //namebt.add(headset.getConnectionState(btdev));
-
         if (bluetoothAdapter == null) {
             state.setText("BT state: Your device doesn't support Bluetooth");
-            /*connect.setText("Connect: false");
-            dev.setText("My Device Adress: null");*/
         } else {
             state.setText("BT version: " + bluetoothAdapter.getState());
-            /*connect.setText("Connect: true");
-            dev.setText("My Device Adress: ...");*/
-            //adress = bluetoothAdapter.getAddress();
-            //name.setText(1);
-            //state.setText("BT state: " + bluetoothAdapter.getState());
-
-            //dev.setText("My Device Adress: " + adress);
-            /*
-
-            namebt = bluetoothAdapter.getName();
-                name.setText(namebt);
-                connect.setText(adress);
-               dev.setText(btdev.getType());
-               name.setText("Device name: " + btdev.getName());
-                connect.setText("Connect: " + btdev.getAddress());
-            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);*/
-/*            BluetoothLeScanner bluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
-            boolean scanning;
-            Handler handler = new Handler();
-            final long SCAN_PERIOD = 10000;
-            LeDeviceListAdapter leDeviceListAdapter = new LeDeviceListAdapter();
-            ScanCallback leScanCallback = new ScanCallback() {
-                @Override
-                public void onScanResult(int callbackType, ScanResult result) {
-                    super.onScanResult(callbackType, result);
-                    leDeviceListAdapter.addDevice(result.getDevice());
-                    leDeviceListAdapter.notifyDataSetChanged();
-                }
-            };
-            private void scanLeDevice() {
-                if (!scanning) {
-                    // Stops scanning after a predefined scan period.
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            scanning = false;
-                            bluetoothLeScanner.stopScan(leScanCallback);
-                        }
-                    }, SCAN_PERIOD);
-
-                    scanning = true;
-                    bluetoothLeScanner.startScan(leScanCallback);
-                } else {
-                    scanning = false;
-                    bluetoothLeScanner.stopScan(leScanCallback);
-                }
-            }*/
         }
     }
 }

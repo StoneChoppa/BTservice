@@ -13,7 +13,6 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Toast.makeText(this,"Create Service",Toast.LENGTH_SHORT).show();
         mediaPlayer = MediaPlayer.create(this,R.raw.srchmusic);
         mediaPlayer.setLooping(false);
 
